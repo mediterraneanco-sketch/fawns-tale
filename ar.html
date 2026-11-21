@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيون الغزال</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+        .lang-bar {
+            background-color: #2c3e50;
+            padding: 15px;
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .lang-bar a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 10px;
+            padding: 8px 14px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .lang-bar a:hover,
+        .lang-bar a.active {
+            background-color: #ffffff;
+            color: #2c3e50;
+        }
+        .content {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+        .post {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+        .post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .post img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .post h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lang-bar">
+        <a href="index.html">English</a>
+        <a href="ge.html">ქართული</a>
+        <a href="ar.html" class="active">العربية</a>
+    </div>
+
+    <div class="content">
+        <h1>عيون الغزال</h1>
+        <div id="ar-posts">جاري التحميل...</div>
+    </div>
+
+    <script>
+        function loadArabic(data) {
+            var box = document.getElementById('ar-posts');
+            var entries = (data && data.feed && data.feed.entry) ? data.feed.entry : [];
+
+            if (entries.length === 0) {
+                box.innerHTML = '<p>لا توجد منشورات بعد.</p>';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < entries.length; i++) {
+                var item = entries[i];
+                var title = item.title && item.title.$t ? item.title.$t : 'بدون عنوان';
+                var body = '';
+                if (item.content && item.content.$t) {
+                    body = item.content.$t;
+                } else if (item.summary && item.summary.$t) {
+                    body = item.summary.$t;
+                }
+                html += '<div class="post"><h2>' + title + '</h2><div>' + body + '</div></div>';
+            }
+            box.innerHTML = html;
+        }
+    </script>
+    <script src="https://uyun-alghazal.blogspot.com/feeds/posts/default?alt=json-in-script&callback=loadArabic"></script>
+
+</body>
+</html>
