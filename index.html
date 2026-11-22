@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ka">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chargali Legacy — ჩარგალი ლეგასი</title>
+    <title>The Fawn’s Tale — შვლის ნუკრის ნაამბობი — حكايات من عيون الغزال</title>
     <style>
         :root {
             --bg: #f4f6f8;
@@ -26,7 +26,7 @@
             padding: 0;
             background-color: var(--bg);
             color: var(--ink);
-            line-height: 1.7;
+            line-height: 1.75;
         }
         .topbar {
             background-color: var(--accent-dark);
@@ -44,7 +44,7 @@
         }
         .brand-top {
             font-weight: bold;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.7px;
             font-size: 0.92rem;
             color: #f3ece0;
         }
@@ -56,7 +56,7 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            margin-left: 8px;
+            margin-left: 6px;
             transition: all 0.2s ease;
         }
         .lang-switch button.active,
@@ -74,39 +74,41 @@
         }
         .hero .tag {
             font-size: 0.85rem;
-            letter-spacing: 1.8px;
+            letter-spacing: 1.6px;
             color: #e3c99b;
             font-weight: bold;
             margin-bottom: 10px;
         }
         .hero h1 {
-            margin: 0 0 14px;
-            font-size: 2.25rem;
-            letter-spacing: 0.3px;
+            margin: 0 0 12px;
+            font-size: 2.15rem;
+        }
+        .hero .subtitle {
+            color: #f0d7a7;
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+            font-weight: bold;
         }
         .hero p {
             max-width: 780px;
-            margin: 0 auto 28px;
-            font-size: 1.05rem;
+            margin: 0 auto 24px;
+            font-size: 1.02rem;
             opacity: 0.95;
         }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
-            max-width: 820px;
-            margin: 0 auto;
+        .hero-actions a {
+            display: inline-block;
+            margin: 6px;
+            padding: 10px 18px;
+            border-radius: 6px;
+            background: var(--gold);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
         }
-        .stat-box {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(212, 179, 118, 0.45);
-            border-radius: 8px;
-            padding: 14px;
-        }
-        .stat-box strong {
-            display: block;
-            font-size: 1.25rem;
-            margin-bottom: 4px;
+        .hero-actions a.outline {
+            background: transparent;
+            border: 1px solid #f0d7a7;
             color: #f0d7a7;
         }
         .container {
@@ -134,26 +136,19 @@
             color: var(--accent);
             font-size: 1.5rem;
         }
-        h3 {
-            margin: 20px 0 8px;
-            color: var(--ink);
-            font-size: 1.15rem;
-        }
-        ul {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-        li {
-            margin-bottom: 6px;
-        }
         blockquote {
-            margin: 16px 0;
+            margin: 18px 0;
             padding: 14px 18px;
             border-left: 4px solid var(--gold);
             background: var(--gold-soft);
             color: var(--ink);
             border-radius: 0 6px 6px 0;
             font-style: italic;
+        }
+        .rtl blockquote {
+            border-left: none;
+            border-right: 4px solid var(--gold);
+            border-radius: 6px 0 0 6px;
         }
         .grid-2 {
             display: grid;
@@ -173,24 +168,6 @@
             color: var(--accent);
             margin-bottom: 6px;
         }
-        .mini-card p {
-            margin: 0;
-            color: var(--ink);
-            font-size: 0.95rem;
-        }
-        .genealogy {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-            background: var(--accent-soft);
-            border: 1px solid var(--border);
-            padding: 14px 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            color: var(--accent);
-            margin: 14px 0;
-        }
         .media-card {
             border: 1px solid var(--border);
             background: #f9fbfc;
@@ -202,7 +179,7 @@
         }
         .media-card img {
             width: 100%;
-            max-height: 360px;
+            max-height: 340px;
             object-fit: cover;
             border-radius: 6px;
             display: block;
@@ -218,18 +195,11 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 0.92rem;
-            transition: background 0.2s ease;
-        }
-        .links-list a:hover {
-            background: var(--accent-dark);
         }
         .links-list a.secondary {
             background: var(--gold-soft);
             color: var(--accent);
             border: 1px solid var(--gold);
-        }
-        .links-list a.secondary:hover {
-            background: #efe6d5;
         }
         footer {
             text-align: center;
@@ -242,378 +212,235 @@
         .hidden {
             display: none;
         }
+        .rtl {
+            direction: rtl;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
 
     <div class="topbar">
-        <div class="brand-top">CHARGALI LEGACY · PSHAVI, GEORGIA</div>
+        <div class="brand-top">THE FAWN’S TALE · VAZHA-PSHAVELA · CHARGALI LEGACY</div>
         <div class="lang-switch">
-            <button id="btn-ka" class="active" onclick="setLang('ka')">ქართული</button>
-            <button id="btn-en" onclick="setLang('en')">English</button>
+            <button id="btn-en" class="active" onclick="setLang('en')">English</button>
+            <button id="btn-ka" onclick="setLang('ka')">ქართული</button>
+            <button id="btn-ar" onclick="setLang('ar')">العربية</button>
         </div>
     </div>
 
-    <!-- ================= ქართული ვერსია ================= -->
-    <div id="lang-ka">
+    <!-- ================= ENGLISH ================= -->
+    <div id="lang-en">
         <header class="hero">
-            <div class="tag">CHARGALI · PSHAVI · GEORGIA</div>
-            <h1>ჩარგალი ლეგასი</h1>
-            <p>ბუნება. ხედვა. ინვესტიცია. — მემკვიდრეობის შენარჩუნება. მომავლის შექმნა. დამოუკიდებელი კერძო განვითარების ინიციატივა ფშავში, სოფელ ჩარგალში. ჩვენი მიზანია ჩარგალის ბუნებრივი გარემოს, ოჯახური ისტორიისა და მთის სტუმართმოყვარეობის შესაძლებლობების გაერთიანება ერთ გრძელვადიან ხედვაში.</p>
-            <div class="stats">
-                <div class="stat-box">
-                    <strong>~1 200 მ / m</strong>
-                    <span>ზღვის დონიდან</span>
-                </div>
-                <div class="stat-box">
-                    <strong>~80 კმ / km</strong>
-                    <span>თბილისიდან</span>
-                </div>
-                <div class="stat-box">
-                    <strong>~200 მ² / m²</strong>
-                    <span>საკოტეჯე ნაკვეთები (I ეტაპი)</span>
-                </div>
+            <div class="tag">LITERARY ADAPTATION · VAZHA-PSHAVELA</div>
+            <h1>The Fawn’s Tale</h1>
+            <div class="subtitle">Narrative Adaptation: Vakhtang Imerlishvili</div>
+            <p>A contemporary narrative adaptation of Vazha-Pshavela’s classic story told through the eyes of a young fawn — reflecting on the voice of nature, the right to life, and human conscience.</p>
+            <div class="hero-actions">
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank">Read English Edition ↗</a>
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank" class="outline">ქართული გამოცემა ↗</a>
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank" class="outline">النسخة العربية ↗</a>
             </div>
         </header>
 
         <main class="container">
             <section>
-                <div class="sec-num">01 • პროექტის შესახებ</div>
-                <h2>ადგილი, სადაც ბუნება და მომავალი ერთმანეთს ხვდება</h2>
-                <p>ჩარგალი საქართველოს ისტორიულ მთიან რეგიონში, ფშავში მდებარეობს. ეს არის ადგილი, სადაც მთის ბუნება, ტრადიციული გარემო და ქართული ლიტერატურული ისტორია განსაკუთრებულ სივრცეს ქმნის.</p>
-                <h3>ჩვენი ხედვის სამი მთავარი მიმართულება</h3>
-                <p>ჩარგალი ლეგასი არის ოჯახურ საკუთრებასთან დაკავშირებული დამოუკიდებელი კერძო ინიციატივა, რომელიც მიზნად ისახავს ამ ადგილის შესაძლებლობების გააზრებულ განვითარებას:</p>
-                <ul>
-                    <li>ბუნებრივი გარემოსა და ადგილის ავთენტური ხასიათის პატივისცემა;</li>
-                    <li>მთის სტუმართმოყვარეობისა და ტურიზმის განვითარების შესაძლებლობები;</li>
-                    <li>ოჯახური ისტორიისა და ლიტერატურული მემკვიდრეობის წარმოჩენა.</li>
-                </ul>
-                <h3>რატომ ჩარგალი? — მდებარეობა და ბუნებრივი გარემო</h3>
-                <p>სოფელი დაკავშირებულია ვაჟა-ფშაველას ცხოვრებასა და შემოქმედებასთან. ტყიანი ფერდობები, მთის ხედები და მდინარე ჩარგალულა (ჩარგლულა) ქმნის გამორჩეულ გარემოს.</p>
-                <ul>
-                    <li>სოფელი ჩარგალი, ფშავი (დუშეთის მუნიციპალიტეტი, მცხეთა-მთიანეთი);</li>
-                    <li>ზღვის დონიდან დაახლოებით 1 200 მეტრი;</li>
-                    <li>თბილისიდან დაახლოებით 80 კილომეტრი.</li>
-                </ul>
-            </section>
-
-            <section>
-                <div class="sec-num">02 • პირველი ეტაპი</div>
-                <h2>საკოტეჯე საინვესტიციო შეთავაზება</h2>
-                <p>პროექტის პირველ ეტაპზე დაინტერესებულ პირებსა და ინვესტორებს ვთავაზობთ რამდენიმე საკოტეჯე ადგილს სოფელ ჩარგალში. თითოეული შეთავაზებული ადგილი დაახლოებით 200 მ² ფართობისაა.</p>
-                <h3>შეთავაზების ძირითადი პირობები</h3>
-                <ul>
-                    <li>რამდენიმე საკოტეჯე ადგილი — დაახლოებით 200 მ² თითოეული;</li>
-                    <li>მიწის შეძენის შესაძლებლობა ინდივიდუალური შეთანხმებით;</li>
-                    <li>საკუთრებისა და მშენებლობის შესაძლებლობა შესაბამისი სამართლებრივი დოკუმენტაციის ფარგლებში;</li>
-                    <li>ჩარგალი ლეგასის საერთო არქიტექტურული და სივრცითი კონცეფციის გათვალისწინებით კოტეჯის აშენების ან პროექტირება-მშენებლობის მინდობის შესაძლებლობა;</li>
-                    <li>მიწის ფასი და თანამშრომლობის პირობები განიხილება დაინტერესებულ პირებთან ინდივიდუალურად.</li>
-                </ul>
-                <p><strong>დაკავშირება:</strong> chargalilegacy@gmail.com</p>
-                <p><strong>ჩარგალი ლეგასი — გახდი ისტორიის ნაწილი (200 კვ.მ):</strong> საკოტეჯე შეთავაზება (KA) • Chargali Legacy — Investment &amp; Partnership • ინვესტიცია და პარტნიორობა (EN)</p>
-            </section>
-
-            <section>
-                <div class="sec-num">03 • გრძელვადიანი ხედვა და სტრატეგია</div>
-                <h2>ერთი პროექტი — რამდენიმე ურთიერთდაკავშირებული მიმართულება</h2>
-                <p>საკოტეჯე შეთავაზება პროექტის პირველი ეტაპია. გრძელვადიანი განვითარების ხედვა ეტაპობრივად განიხილება შესაბამისი დაგეგმარების, ინვესტიციებისა და საჭირო ნებართვების გათვალისწინებით.</p>
+                <div class="sec-num">01 · ABOUT THE WORK</div>
+                <h2>The Voice of the Forest and Conscience</h2>
+                <p>Inspired by Georgian writer <strong>Vazha-Pshavela</strong> and adapted into a contemporary narrative by <strong>Vakhtang Imerlishvili</strong>, <em>The Fawn’s Tale</em> invites readers to experience the mountain forest from the perspective of a young fawn discovering freedom, danger, and the moral responsibility of humanity toward living nature.</p>
+                <blockquote>“Nature speaks in every rustle of leaves and mountain wind — listening with empathy is the beginning of conscience.”</blockquote>
                 <div class="grid-2">
                     <div class="mini-card">
-                        <strong>01. განთავსება და მთის სტუმართმოყვარეობა</strong>
-                        <p>ეთნო-სტილის კოტეჯები, მცირე ზომის განთავსების ობიექტები და სტუმრებისთვის განკუთვნილი ინფრასტრუქტურა, რომელიც მთის გარემოს შეესაბამება.</p>
+                        <strong>01. Perspective of Innocence</strong>
+                        <p>Told through the eyes of a fawn experiencing the beauty and fragility of the highland forest.</p>
                     </div>
                     <div class="mini-card">
-                        <strong>02. ბუნებაზე დაფუძნებული ტურიზმი და რეკრეაცია</strong>
-                        <p>სალაშქრო ბილიკები, საცხენოსნო ტურები, სეზონური აქტივობები, პანორამული ხედები, ასევე სამომავლო ზიპლაინისა და საკალმახე ტბორის კონცეფციები.</p>
+                        <strong>02. Reverence for Life</strong>
+                        <p>Explores harmony with nature, respect for every living creature, and ethical awareness.</p>
                     </div>
                     <div class="mini-card">
-                        <strong>03. ოჯახური ისტორია და ლიტერატურა</strong>
-                        <p>საგვარეულო არქივის, ეთნოგრაფიული კუთხის, ადგილობრივი ისტორიისა და ქართული ლიტერატურული მემკვიდრეობის წარმოჩენა.</p>
-                    </div>
-                    <div class="mini-card">
-                        <strong>04. ადგილობრივი პროდუქტები და გამოცდილება</strong>
-                        <p>ფშაური ტრადიციული სამზარეულო, ადგილობრივი ნაწარმი, რეწვა, მცირე კულტურული ღონისძიებები და სოფლის მეწარმეობის მხარდაჭერა.</p>
-                    </div>
-                    <div class="mini-card">
-                        <strong>05. პარტნიორობა და ინვესტიცია</strong>
-                        <p>თანამშრომლობა კერძო ინვესტორებთან, ტურისტულ კომპანიებთან, სტუმართმოყვარეობის ოპერატორებსა და სტრატეგიულ პარტნიორებთან.</p>
-                    </div>
-                    <div class="mini-card">
-                        <strong>ბოწახი — ბოწახის მიმართულება</strong>
-                        <p>ჩარგლის ზემოთ მდებარე ბოწახის ტერიტორია განიხილება როგორც გრძელვადიანი ხედვის ნაწილი — მთის რეკრეაციის, გამაჯანსაღებელი (Wellness) სივრცეებისა და ბუნების ბილიკებისთვის.</p>
+                        <strong>03. Multilingual Reach</strong>
+                        <p>Presented in English, Georgian, and Arabic (<em>Uyun Al-Ghazal</em>) to share Georgian literary heritage globally.</p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="sec-num">04 • ისტორია და საგვარეულო მეხსიერება</div>
-                <h2>ჩარგლის მეხსიერება — რაზიკაშვილების საგვარეულო არქივი</h2>
-                <p>ვაჟა-ფშაველას სახლ-მუზეუმის ზემოთ, ჩარგლის მთიან ლანდშაფტში მდებარე მიწა ინახავს ოჯახურ ისტორიებს, ფოტოარქივსა და თაობიდან თაობაზე გადაცემულ მეხსიერებას.</p>
-                <h3>რაზიკაშვილების გენეალოგიური ხაზი (ნადირას შტო)</h3>
-                <p>ერთი ფესვი ფშავის მთიანეთში — შტო, რომელიც დარჩა ჩარგალში და თაობების განმავლობაში გააგრძელა ოჯახის ისტორია.</p>
-                <div class="genealogy">
-                    <span>IMEDA / იმედა</span> →
-                    <span>BERO / ბერო</span> →
-                    <span>NADIRA'S BRANCH / ნადირას შტო</span> →
-                    <span>NADIRA / ნადირა</span> →
-                    <span>GRIGOL / გრიგოლ</span> →
-                    <span>TAMARA “KRAZANA” / თამარ „კრაზანა“</span> →
-                    <span>DIANA / დიანა</span>
-                </div>
-                <blockquote>„ზოგიერთი ადგილი მხოლოდ იმას კი არ გვახსენებს, საიდან მოვდივართ — ის გვიჩვენებს, რა ღირს მომავალში წასაღებად.“</blockquote>
-            </section>
-
-            <section>
-                <div class="sec-num">05 • ჩარგლის პანორამა, ბუნება და ხედვა</div>
-                <h2>კადრები ჩარგლიდან და ფშავის მთებიდან</h2>
+                <div class="sec-num">02 · VISUAL IMPRESSIONS</div>
+                <h2>Highland Landscape &amp; Visuals</h2>
                 <div class="grid-2">
                     <div class="media-card">
-                        <img src="20260819_125958.jpg" alt="ჩარგლის მთის პანორამა">
-                        <strong>ჩარგლის მთის პანორამა და ხეობა</strong><br>
-                        ფშავის მთიანი ლანდშაფტი და ხედები
+                        <img src="6_Photos.jpg" alt="Highland Forest and Slopes">
+                        <strong>Forest &amp; Mountain Slopes</strong>
                     </div>
                     <div class="media-card">
-                        <img src="6_Photos.jpg" alt="ჩარგლის მწვანე ფერდობები">
-                        <strong>ჩარგლის მწვანე ფერდობები</strong><br>
-                        ტყიანი მთები და ბუნებრივი გარემო
+                        <img src="Screenshot_20261107_095513_Photos.jpg" alt="Mountain Flora and View">
+                        <strong>Mountain Flora &amp; Horizon</strong>
                     </div>
                     <div class="media-card">
-                        <img src="Screenshot_20261107_095513_Photos.jpg" alt="ფშავის ფლორა და მთა">
-                        <strong>ჩარგლის ბუნება და ფლორა</strong><br>
-                        ადგილობრივი მცენარეულობა და მთის ხედი
+                        <img src="89aabf2869129b488f2ede1eac7d1566.jpg" alt="Nature and Atmosphere">
+                        <strong>Natural Atmosphere</strong>
                     </div>
                     <div class="media-card">
-                        <img src="photo_clean.jpg" alt="ადგილობრივი ხეხილი და მთა">
-                        <strong>ბუნებრივი გარემო და ხეხილი</strong><br>
-                        ჩარგლის მთის ფერდობების ბუნება
-                    </div>
-                    <div class="media-card">
-                        <img src="ef9cefa7c0c8281086e5a288ccf3b814.jpg" alt="მთის განვითარების კონცეფცია">
-                        <strong>არქიტექტურული და განვითარების ხედვა</strong><br>
-                        მთის სივრცის კონცეპტუალური ხედვა
-                    </div>
-                    <div class="media-card">
-                        <img src="51711_2.jpg" alt="ტერიტორიის ხედვა და ლოკაცია">
-                        <strong>ტერიტორიის ხედი და გარემო</strong><br>
-                        ჩარგლის მიმდებარე სივრცე და ხედვა
+                        <img src="ef9cefa7c0c8281086e5a288ccf3b814.jpg" alt="Concept Visual">
+                        <strong>Visual &amp; Concept Note</strong>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="sec-num">06 • ლიტერატურული ინიციატივა</div>
-                <h2>ქართული ლიტერატურა მსოფლიოსთვის — ვაჟა-ფშაველას სამყარო</h2>
-                <p>ჩარგალი ლეგასისთან დაკავშირებული შემოქმედებითი მიმართულება, რომელიც ვაჟა-ფშაველას ნაწარმოებების თანამედროვე ნარატიულ ადაპტაციებს აცნობს მკითხველს ქართულ, ინგლისურ და არაბულ ენებზე (ავტორი / ადაპტაცია: ვახტანგ იმერლიშვილი).</p>
-                <h3>„სტუმარ-მასპინძელი“ — ენობრივი გამოცემები</h3>
-                <p>ვაჟა-ფშაველას უკვდავი პოემის თანამედროვე ნარატიული გადმოცემა — თავისუფლად ხელმისაწვდომი გამოცემა ღირსების, სტუმარ-მასპინძლობისა და ადამიანობის შესახებ.</p>
+                <div class="sec-num">03 · EDITIONS &amp; ECOSYSTEM</div>
+                <h2>Read Across Editions</h2>
                 <div class="links-list">
-                    <a href="https://mediterraneanco-sketch.github.io/hg/ge.html" target="_blank">🇬🇪 ქართული გამოცემა — სტუმარ-მასპინძელი ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/hg/" target="_blank" class="secondary">🇬🇧 English Edition — Host and Guest ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/hg/ar.html" target="_blank" class="secondary">🇸🇦 النسخة العربية — الضيف والمضيف ↗</a>
-                </div>
-                <h3>„შვლის ნუკრის ნაამბობი“ — ენობრივი გამოცემები</h3>
-                <p>ლიტერატურული ადაპტაცია, მოთხრობილი შვლის ნუკრის თვალით — ბუნების ხმის, სიცოცხლის უფლებისა და ადამიანის სინდისის შესახებ.</p>
-                <div class="links-list">
-                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank">🇬🇪 ქართული გამოცემა — შვლის ნუკრის ნაამბობი ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank" class="secondary">🇬🇧 English Edition — The Fawn’s Tale ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank" class="secondary">🇸🇦 النسخة العربية — حكايات من عيون الغزال (Uyun Al-Ghazal) ↗</a>
-                </div>
-            </section>
-
-            <section>
-                <div class="sec-num">CONTACT &amp; OFFICIAL CHANNELS</div>
-                <h2>დაუკავშირდით Chargali Legacy-ს</h2>
-                <p>საინვესტიციო შეთავაზებების, სტრატეგიული პარტნიორობის ან პროექტის განვითარების საკითხებზე დეტალები განიხილება პირადი კომუნიკაციისა და ურთიერთშეთანხმების საფუძველზე.</p>
-                <p>📍 სოფელი ჩარგალი, ფშავი • დუშეთის მუნიციპალიტეტი • მცხეთა-მთიანეთი, საქართველო</p>
-                <div class="links-list">
-                    <a href="mailto:chargalilegacy@gmail.com">✉️ chargalilegacy@gmail.com</a>
-                    <a href="https://chargali-legacy.blogspot.com/" target="_blank" class="secondary">🌐 Official Blog (Blogger) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank">🇬🇧 The Fawn’s Tale (EN) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank" class="secondary">🇬🇪 შვლის ნუკრის ნაამბობი (KA) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank" class="secondary">🇸🇦 حكايات من عيون الغزال (AR) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/hg/" target="_blank" class="secondary">Host and Guest ↗</a>
                     <a href="https://chargalilegacy.github.io/" target="_blank" class="secondary">Chargali Legacy Hub ↗</a>
                 </div>
             </section>
         </main>
 
         <footer>
-            <strong>CHARGALI LEGACY — Nature. Heritage. Experience. Long-Term Vision.</strong><br>
-            სოფელი ჩარგალი, ფშავი, საქართველო • chargalilegacy@gmail.com
+            <strong>The Fawn’s Tale — Vakhtang Imerlishvili · Inspired by Vazha-Pshavela</strong><br>
+            Chargali, Pshavi, Georgia • chargalilegacy@gmail.com
         </footer>
     </div>
 
-    <!-- ================= ENGLISH VERSION ================= -->
-    <div id="lang-en" class="hidden">
+    <!-- ================= ქართული ================= -->
+    <div id="lang-ka" class="hidden">
         <header class="hero">
-            <div class="tag">CHARGALI · PSHAVI · GEORGIA</div>
-            <h1>Chargali Legacy</h1>
-            <p>Preserving Heritage. Building the Future. Passing Values Forward. A Place Where Heritage Meets the Future — connecting nature, cultural heritage, and responsible development in Chargali, Pshavi.</p>
-            <div class="stats">
-                <div class="stat-box">
-                    <strong>~1,200 m</strong>
-                    <span>Above Sea Level</span>
-                </div>
-                <div class="stat-box">
-                    <strong>~80 km</strong>
-                    <span>From Tbilisi</span>
-                </div>
-                <div class="stat-box">
-                    <strong>~200 m²</strong>
-                    <span>Cottage Plots (Phase I)</span>
-                </div>
+            <div class="tag">ლიტერატურული ადაპტაცია · ვაჟა-ფშაველა</div>
+            <h1>შვლის ნუკრის ნაამბობი</h1>
+            <div class="subtitle">ნარატიული ადაპტაცია: ვახტანგ იმერლიშვილი</div>
+            <p>ვაჟა-ფშაველას ცნობილი მოთხრობის თანამედროვე ნარატიული გადმოცემა, მოთხრობილი შვლის ნუკრის თვალით — ბუნების ხმის, სიცოცხლის უფლებისა და ადამიანის სინდისის შესახებ.</p>
+            <div class="hero-actions">
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank">ქართული გამოცემა ↗</a>
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank" class="outline">English Edition ↗</a>
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank" class="outline">النسخة العربية ↗</a>
             </div>
         </header>
 
         <main class="container">
             <section>
-                <div class="sec-num">01 · ABOUT THE PROJECT</div>
-                <h2>A Place Where Heritage Meets the Future</h2>
-                <p>Nestled in the mountainous region of Pshavi in Georgia, Chargali represents a distinctive meeting point of nature, cultural heritage, and human experience. Our purpose is to preserve what matters while creating opportunities for the future.</p>
-                <h3>Three Interconnected Priorities</h3>
-                <ul>
-                    <li><strong>01. Preserving Heritage:</strong> Recognizing and safeguarding family history, enduring values, local traditions, and the distinctive character of Chargali.</li>
-                    <li><strong>02. Sustainable Development:</strong> Exploring opportunities for nature-based tourism, mountain hospitality, and development that respects the surrounding environment.</li>
-                    <li><strong>03. Building the Future:</strong> Developing ideas and partnerships that connect cultural significance with responsible economic opportunity.</li>
-                </ul>
-            </section>
-
-            <section>
-                <div class="sec-num">02 · PHASE I</div>
-                <h2>Cottage Investment &amp; Partnership</h2>
-                <p>In the first phase, Chargali Legacy offers cottage plots of approximately 200 m² each in Chargali village, with individual terms, legal ownership/construction options aligned with the architectural concept, and private consultation via <strong>chargalilegacy@gmail.com</strong>.</p>
-            </section>
-
-            <section>
-                <div class="sec-num">03 · LONG-TERM VISION</div>
-                <h2>One Project — Interconnected Directions</h2>
+                <div class="sec-num">01 • გამოცემის შესახებ</div>
+                <h2>ტყის ხმა და ადამიანის სინდისი</h2>
+                <p><strong>ვაჟა-ფშაველას</strong> ნაწარმოებით შთაგონებული და <strong>ვახტანგ იმერლიშვილის</strong> მიერ თანამედროვე ნარატიულ ფორმაში გადმოცემული <em>„შვლის ნუკრის ნაამბობი“</em> მკითხველს მთის ტყესა და ბუნებას შვლის ნუკრის თვალით დაანახებს — სიცოცხლის სიყვარულის, სისასტიკისა და თანაგრძნობის ჭრილში.</p>
+                <blockquote>„ბუნების ყოველი ხმა მკითხველს სინდისისა და ცოცხალი სამყაროს პატივისცემისკენ მოუწოდებს.“</blockquote>
                 <div class="grid-2">
                     <div class="mini-card">
-                        <strong>01. Mountain Hospitality</strong>
-                        <p>Ethno-style cottages, small accommodation spaces, and nature-aligned guest infrastructure.</p>
+                        <strong>01. შვლის ნუკრის თვალით</strong>
+                        <p>მთის ბუნების სილამაზისა და საფრთხეების აღქმა უმანკო, ცოცხალი პერსპექტივიდან.</p>
                     </div>
                     <div class="mini-card">
-                        <strong>02. Nature &amp; Recreation</strong>
-                        <p>Hiking trails, equestrian routes, seasonal activities, panoramic viewpoints, and future zip-line and trout pond concepts.</p>
+                        <strong>02. სიცოცხლის უფლება</strong>
+                        <p>ბუნებასთან ჰარმონიის, სინდისისა და ყოველი ცოცხალი არსების მიმართ პასუხისმგებლობის თემა.</p>
                     </div>
                     <div class="mini-card">
-                        <strong>03. Family Memory &amp; Literature</strong>
-                        <p>Family archive, ethnographic corner, local history, and literary heritage inspired by Vazha-Pshavela.</p>
-                    </div>
-                    <div class="mini-card">
-                        <strong>04. Local Products &amp; Experience</strong>
-                        <p>Pshavi cuisine, local produce, crafts, small cultural gatherings, and rural enterprise support.</p>
-                    </div>
-                    <div class="mini-card">
-                        <strong>05. Partnerships &amp; Investment</strong>
-                        <p>Collaboration with private investors, travel operators, hospitality partners, and long-term stakeholders.</p>
-                    </div>
-                    <div class="mini-card">
-                        <strong>Botsakhi Direction</strong>
-                        <p>The Botsakhi area above Chargali is envisioned as part of the long-term concept for mountain recreation, wellness spaces, and nature trails.</p>
+                        <strong>03. მრავალენოვანი სივრცე</strong>
+                        <p>ხელმისაწვდომია ქართულ, ინგლისურ და არაბულ ენებზე ქართული მწერლობის უნივერსალური ღირებულებების გასაზიარებლად.</p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="sec-num">04 · HERITAGE &amp; FAMILY MEMORY</div>
-                <h2>The Memory of Chargali — Razikashvili Family Archive</h2>
-                <p>Above the Vazha-Pshavela House-Museum in Chargali, the land holds family stories, historical photographs, and memory passed across generations.</p>
-                <div class="genealogy">
-                    <span>IMEDA</span> →
-                    <span>BERO</span> →
-                    <span>NADIRA'S BRANCH</span> →
-                    <span>NADIRA</span> →
-                    <span>GRIGOL</span> →
-                    <span>TAMARA “KRAZANA”</span> →
-                    <span>DIANA</span>
-                </div>
-            </section>
-
-            <section>
-                <div class="sec-num">05 · CHARGALI PANORAMA &amp; NATURE</div>
-                <h2>Scenes from Chargali &amp; Pshavi</h2>
+                <div class="sec-num">02 • ვიზუალური კადრები</div>
+                <h2>მთის ლანდშაფტი და განწყობა</h2>
                 <div class="grid-2">
                     <div class="media-card">
-                        <img src="20260819_125958.jpg" alt="Chargali Mountain Panorama">
-                        <strong>Chargali Mountain Panorama</strong>
+                        <img src="6_Photos.jpg" alt="მთის ტყე და ფერდობები">
+                        <strong>ტყიანი ფერდობები</strong>
                     </div>
                     <div class="media-card">
-                        <img src="6_Photos.jpg" alt="Chargali Green Slopes">
-                        <strong>Forested Slopes of Pshavi</strong>
+                        <img src="Screenshot_20261107_095513_Photos.jpg" alt="მთის ფლორა და ხედი">
+                        <strong>მთის ფლორა და ხედები</strong>
                     </div>
                     <div class="media-card">
-                        <img src="Screenshot_20261107_095513_Photos.jpg" alt="Chargali Flora and Mountains">
-                        <strong>Highland Flora &amp; Mountain View</strong>
+                        <img src="89aabf2869129b488f2ede1eac7d1566.jpg" alt="ბუნებრივი კადრი">
+                        <strong>ბუნებრივი გარემო</strong>
                     </div>
                     <div class="media-card">
-                        <img src="photo_clean.jpg" alt="Local Trees and Landscape">
-                        <strong>Natural Surroundings</strong>
-                    </div>
-                    <div class="media-card">
-                        <img src="ef9cefa7c0c8281086e5a288ccf3b814.jpg" alt="Mountain Concept Visual">
-                        <strong>Mountain Concept &amp; Design</strong>
-                    </div>
-                    <div class="media-card">
-                        <img src="51711_2.jpg" alt="Site View and Context">
-                        <strong>Site Context &amp; View</strong>
+                        <img src="ef9cefa7c0c8281086e5a288ccf3b814.jpg" alt="კონცეპტუალური კადრი">
+                        <strong>კონცეპტუალური ხედვა</strong>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="sec-num">06 · LITERARY INITIATIVE</div>
-                <h2>Georgian Literature for the World — Vazha-Pshavela</h2>
-                <p>A creative initiative connected to Chargali Legacy presenting contemporary narrative adaptations of Vazha-Pshavela's works in Georgian, English, and Arabic (Author / Adaptation: Vakhtang Imerlishvili).</p>
-                <h3>“Host and Guest” — Editions</h3>
+                <div class="sec-num">03 • გამოცემები და ეკოსისტემა</div>
+                <h2>ენობრივი გამოცემები და დაკავშირებული გვერდები</h2>
                 <div class="links-list">
-                    <a href="https://mediterraneanco-sketch.github.io/hg/ge.html" target="_blank">🇬🇪 Georgian — სტუმარ-მასპინძელი ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/hg/" target="_blank" class="secondary">🇬🇧 English Edition — Host and Guest ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/hg/ar.html" target="_blank" class="secondary">🇸🇦 النسخة العربية — الضيف والمضيف ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank">🇬🇪 შვლის ნუკრის ნაამბობი (KA) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank" class="secondary">🇬🇧 The Fawn’s Tale (EN) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank" class="secondary">🇸🇦 حكايات من عيون الغزال (AR) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/hg/" target="_blank" class="secondary">სტუმარ-მასპინძელი ↗</a>
+                    <a href="https://chargalilegacy.github.io/" target="_blank" class="secondary">ჩარგალი ლეგასი ↗</a>
                 </div>
-                <h3>“The Fawn’s Tale” — Editions</h3>
-                <div class="links-list">
-                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank">🇬🇧 English Edition — The Fawn’s Tale ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank" class="secondary">🇬🇪 Georgian — შვლის ნუკრის ნაამბობი ↗</a>
-                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank" class="secondary">🇸🇦 النسخة العربية — حكايات من عيون الغزال ↗</a>
-                </div>
+            </section>
+        </main>
+
+        <footer>
+            <strong>შვლის ნუკრის ნაამბობი — ვახტანგ იმერლიშვილი · ვაჟა-ფშაველას სამყარო</strong><br>
+            ჩარგალი, ფშავი, საქართველო • chargalilegacy@gmail.com
+        </footer>
+    </div>
+
+    <!-- ================= العربية ================= -->
+    <div id="lang-ar" class="hidden rtl">
+        <header class="hero">
+            <div class="tag">اقتباس أدبي · فاجا بشافيلا</div>
+            <h1>حكايات من عيون الغزال</h1>
+            <div class="subtitle">إعداد وسرد أدبي: فاختانغ إيمرليشفيلي</div>
+            <p>معالجة سردية معاصرة لقصة الكاتب الجورجي الكبير فاجا بشافيلا، تُروى من منظور غزال صغير حول صوت الطبيعة وحق الحياة والضمير الإنساني.</p>
+            <div class="hero-actions">
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank">النسخة العربية ↗</a>
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank" class="outline">English Edition ↗</a>
+                <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank" class="outline">ქართული გამოცემა ↗</a>
+            </div>
+        </header>
+
+        <main class="container">
+            <section>
+                <div class="sec-num">01 · عن الإصدار</div>
+                <h2>صوت الغابة والضمير الإنساني</h2>
+                <p>مستوحاة من أدب <strong>فاجا بشافيلا</strong> وبصياغة سردية معاصرة بقلم <strong>فاختانغ إيمرليشفيلي</strong>، تقدم هذه التجربة الأدبية تأملاً إنسانياً في جمال الطبيعة الجبلية واحترام الحياة والرحمة.</p>
+                <blockquote>«في كل نسمة جبلية وصوت من الطبيعة دعوة صادقة إلى اليقظة والضمير.»</blockquote>
             </section>
 
             <section>
-                <div class="sec-num">CONTACT &amp; OFFICIAL CHANNELS</div>
-                <h2>Connect with Chargali Legacy</h2>
-                <p>Investment inquiries, strategic partnerships, and development discussions are handled through direct communication and mutual agreement.</p>
-                <p>📍 Chargali Village, Pshavi • Dusheti Municipality • Mtskheta-Mtianeti, Georgia</p>
+                <div class="sec-num">02 · الإصدارات والروابط</div>
+                <h2>اقرأ عبر اللغات والمنصات</h2>
                 <div class="links-list">
-                    <a href="mailto:chargalilegacy@gmail.com">✉️ chargalilegacy@gmail.com</a>
-                    <a href="https://chargali-legacy.blogspot.com/" target="_blank" class="secondary">🌐 Official Blog (Blogger) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ar.html" target="_blank">🇸🇦 حكايات من عيون الغزال (AR) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/" target="_blank" class="secondary">🇬🇧 The Fawn’s Tale (EN) ↗</a>
+                    <a href="https://mediterraneanco-sketch.github.io/fawns-tale/ge.html" target="_blank" class="secondary">🇬🇪 შვლის ნუკრის ნაამბობი (KA) ↗</a>
                     <a href="https://chargalilegacy.github.io/" target="_blank" class="secondary">Chargali Legacy Hub ↗</a>
                 </div>
             </section>
         </main>
 
         <footer>
-            <strong>CHARGALI LEGACY — Nature. Heritage. Experience. Long-Term Vision.</strong><br>
-            Chargali Village, Pshavi, Georgia • chargalilegacy@gmail.com
+            <strong>حكايات من عيون الغزال — فاختانغ إيمرليشفيلي</strong><br>
+            تشارغالي، بشافي، جورجيا • chargalilegacy@gmail.com
         </footer>
     </div>
 
     <script>
         function setLang(lang) {
-            const kaEl = document.getElementById('lang-ka');
-            const enEl = document.getElementById('lang-en');
-            const btnKa = document.getElementById('btn-ka');
-            const btnEn = document.getElementById('btn-en');
-
-            if (lang === 'en') {
-                kaEl.classList.add('hidden');
-                enEl.classList.remove('hidden');
-                btnEn.classList.add('active');
-                btnKa.classList.remove('active');
-                document.documentElement.lang = 'en';
-            } else {
-                enEl.classList.add('hidden');
-                kaEl.classList.remove('hidden');
-                btnKa.classList.add('active');
-                btnEn.classList.remove('active');
-                document.documentElement.lang = 'ka';
-            }
+            const langs = ['en', 'ka', 'ar'];
+            langs.forEach((l) => {
+                const el = document.getElementById('lang-' + l);
+                const btn = document.getElementById('btn-' + l);
+                if (l === lang) {
+                    el.classList.remove('hidden');
+                    btn.classList.add('active');
+                } else {
+                    el.classList.add('hidden');
+                    btn.classList.remove('active');
+                }
+            });
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
         }
     </script>
 </body>
